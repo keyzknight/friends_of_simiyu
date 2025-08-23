@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends of Simiyu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+        
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2ecc71;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+            color: #2ecc71;
+        }
+        
+        .hamburger-menu {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2ecc71;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .hamburger-menu:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 5rem 2rem;
+            transition: right 0.3s ease;
+            z-index: 999;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
+        
+        .nav-menu.active {
+            right: 0;
+        }
+        
+        .nav-menu h3 {
+            color: #2ecc71;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #2ecc71;
+            padding-bottom: 0.5rem;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: 1.2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: block;
+            padding: 0.8rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: #2ecc71;
+            color: #000;
+            padding-left: 1.5rem;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-menu:hover {
+            color: #e74c3c;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 998;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Home Section */
+        .home-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            color: #fff;
+        }
+        
+        .welcome {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #2ecc71;
+            min-height: 3.5rem;
+        }
+        
+        .main-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            color: #f1c40f;
+            min-height: 2.5rem;
+            overflow: hidden;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #2ecc71;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #2ecc71;
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: #2ecc71;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+        
+        .scroll-down {
+            margin-top: 2rem;
+            font-size: 2rem;
+            color: #fff;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* About Us Section */
+        .about-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #2ecc71;
+            border-radius: 2px;
+        }
+        
+        .story-section {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .slider-container {
+            position: relative;
+            margin: 3rem auto;
+            max-width: 1000px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            display: block;
+            height: 400px;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0 3rem;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background: #2ecc71;
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .slider-btn {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .slider-btn:hover {
+            background: #27ae60;
+        }
+        
+        .values-section {
+            margin: 4rem 0;
+        }
+        
+        .value-card {
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .value-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: #2c3e50;
+        }
+        
+        .value-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        .motto {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .motto h3, .motto p {
+            color: white;
+        }
+        
+        .vision {
+            background: #3498db;
+            color: white;
+        }
+        
+        .vision h3, .vision p {
+            color: white;
+        }
+        
+        .goals {
+            background: #7f8c8d;
+            color: white;
+        }
+        
+        .goals h3, .goals p {
+            color: white;
+        }
+        
+        .goal-list {
+            padding-left: 20px;
+        }
+        
+        .goal-list li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Habari Section */
+        .habari-container {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 80px 20px 50px;
+            background: linear-gradient(to bottom, #e6f7ff, #b3e0ff);
+        }
+        
+        /* Matangazo Section */
+        .matangazo-container {
+            background: #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .matangazo-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .matangazo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d35400;
+            margin-right: 10px;
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .matangazo-ticker {
+            overflow: hidden;
+            height: 30px;
+            position: relative;
+        }
+        
+        .matangazo-list {
+            position: absolute;
+            width: 100%;
+            animation: ticker 20s infinite linear;
+        }
+        
+        @keyframes ticker {
+            0% { top: 0; }
+            25% { top: -30px; }
+            50% { top: -60px; }
+            75% { top: -90px; }
+            100% { top: 0; }
+        }
+        
+        .matangazo-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+        }
+        
+        .matangazo-date {
+            font-weight: 600;
+            color: #34495e;
+        }
+        
+        .matangazo-text {
+            color: #34495e;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .matangazo-text:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+        
+        /* News Cards */
+        .news-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .news-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 2px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            border-color: #2ecc71;
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #2ecc71;
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .news-excerpt {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .news-read-more {
+            display: inline-block;
+            background: #2ecc71;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .news-read-more:hover {
+            background: #27ae60;
+        }
+        
+        /* Modal for announcements */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1002;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #e74c3c;
+        }
+        
+        .modal-title {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .modal-date {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .modal-text {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.4rem;
+            }
+            
+            .welcome {
+                font-size: 2rem;
+            }
+            
+            .feature-content {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .value-card {
+                padding: 1.5rem;
+            }
+            
+            .slide img {
+                height: 300px;
+            }
+            
+            .nav-menu {
+                width: 250px;
+            }
+            
+            .news-title {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .header {
+                padding: 1rem 5%;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .story-text {
+                font-size: 1rem;
+            }
+            
+            .value-card h3 {
+                font-size: 1.5rem;
+            }
+            
+            .slide img {
+                height: 250px;
+            }
+            
+            .nav-menu {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .matangazo-title {
+                font-size: 1.2rem;
+            }
+            
+            .news-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    
+    <header class="header" id="header">
+        <div class="logo">
+            <i class="fas fa-hands-helping"></i>
+            <span>FoSimiyu</span>
+        </div>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <nav class="nav-menu" id="nav-menu">
+        <div class="close-menu" id="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <h3>Menyu ya Navigesheni</h3>
+        <ul class="nav-links">
+            <li><a href="#home">Nyumbani</a></li>
+            <li><a href="#about">Kuhusu Sisi</a></li>
+            <li><a href="#habari">Habari</a></li>
+            <li><a href="#matukio">Matukio</a></li>
+            <li><a href="#faida">Faida</a></li>
+            <li><a href="#jiunge">Jiunge Nasi</a></li>
+            <li><a href="#uongozi">Uongozi</a></li>
+            <li><a href="#mawasiliano">Mawasiliano</a></li>
+        </ul>
+    </nav>
+
+    <!-- Modal for Announcements -->
+    <div class="modal" id="announcement-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h3 class="modal-title" id="modal-title"></h3>
+            <div class="modal-date" id="modal-date"></div>
+            <div class="modal-text" id="modal-text"></div>
+        </div>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+        <div class="welcome" id="welcome-text"></div>
+        <h1 class="main-title">Friends of Simiyu</h1>
+        <div class="tagline" id="tagline-text"></div>
+        
+        <div class="feature-card">
+            <p class="feature-content">
+                Karibu katika jumuiya yetu ya "Friends of Simiyu". Tunayo lengo la kuimarisha mshikamano, maadili, na maendeleo katika jamii yetu. Jiunge nasi leo kuwa mchangiaji wa mabadiliko chanya.
+            </p>
+            <a href="#about" class="cta-button">Kuhusu Sisi</a>
+        </div>
+        
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-container">
+        <h2 class="section-title">Kuhusu Sisi</h2>
+        
+        <div class="story-section">
+            <p class="story-text">
+                Friends of Simiyu ni chama kilichoundwa mwaka 2010 kwa lengo la kuwaunganisha wananchi wa Mkoa wa Simiyu 
+                na kushirikiana katika kukuza maendeleo ya kijamii, kiuchumi na kiteknolojia. Kwa zaidi ya miaka 10 tumekuwa 
+                tukifanya kazi kwa karibu na jamii za Simiyu kwa kushirikisha na kuwezesha mijadala na miradi mbalimbali.
+            </p>
+        </div>
+        
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Community Meeting">
+                    <div class="slide-caption">Mkutano wa wanachama wa Friends of Simiyu</div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Community Project">
+                    <div class="slide-caption">Miradi ya maendeleo ya jamii</div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18861754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Leadership Training">
+                    <div class="slide-caption">Mafunzo ya uongozi kwa vijana</div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1521737451536-00a86f630f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Education Program">
+                    <div class="slide-caption">Mpango wa elimu kwa watoto</div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Community Event">
+                    <div class="slide-caption">Tukio la kijamii lililofanikiwa</div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Agriculture Project">
+                    <div class="slide-caption">Mradi wa kilimo endelevu</div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Community Celebration">
+                    <div class="slide-caption">Sherehe ya kumalizia mwaka pamoja</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-controls">
+            <button class="slider-btn" id="prev-btn">Nyuma</button>
+            <button class="slider-btn" id="next-btn">Mbele</button>
+        </div>
+        
+        <div class="slider-nav" id="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+        
+        <div class="values-section">
+            <div class="value-card motto">
+                <h3>Motto ya Chama</h3>
+                <p>"Umoja ni nguvu, utengano ni udhaifu". Motto hii inatuongoza katika misingi yetu ya kushirikiana na kuwaunganisha wananchi wa Simiyu kwa lengo la maendeleo ya pamoja.</p>
+            </div>
+            
+            <div class="value-card vision">
+                <h3>Dira na Dhamira</h3>
+                <p>Dira yetu ni kuwa chama kinachojulikana kitaifa kwa ushirikiano na maendeleo. Dhamira yetu ni kukuza mshikamano, kuelimisha na kuwezesha wananchi wa Simiyu kwa kushirikiana na serikali na wadau wengine wa maendeleo.</p>
+            </div>
+            
+            <div class="value-card goals">
+                <h3>Malengo Yetu</h3>
+                <ul class="goal-list">
+                    <li>Kuimarisha mshikamano miongoni mwa wanachama na wananchi wa Simiyu</li>
+                    <li>Kushirikisha jamii katika mijadala na miradi ya maendeleo</li>
+                    <li>Kukuza elimu na mafunzo kwa vijana na wanawake</li>
+                    <li>Kushirikiana na serikali na wadau wengine katika kuleta maendeleo</li>
+                    <li>Kuhifadhi na kukuza utamaduni wa asili wa jamii za Simiyu</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Habari Section -->
+    <section id="habari" class="habari-container">
+        <h2 class="section-title">Habari</h2>
+        
+        <!-- Matangazo Section -->
+        <div class="matangazo-container">
+            <div class="matangazo-header">
+                <div class="matangazo-title">MATANGAZO</div>
+                <i class="fas fa-bullhorn" style="color: #d35400;"></i>
+            </div>
+            <div class="matangazo-ticker">
+                <div class="matangazo-list">
+                    <div class="matangazo-item">
+                        <span class="matangazo-date">25/08/2023</span>
+                        <span class="matangazo-text" data-title="Mkutano Mkuu" data-date="25/08/2023" data-text="MKutano mkuu wa wanachama utafanyika tarehe 30/08/2023 katika ukumbi wa serikali jijini. Mwanachama yeyote anakaribishwa kuhudhuria.">Mkutano Mkuu wa Wanachama</span>
+                    </div>
+                    <div class="matangazo-item">
+                        <span class="matangazo-date">20/08/2023</span>
+                        <span class="matangazo-text" data-title="Malipo ya Ada" data-date="20/08/2023" data-text="Malipo ya ada ya mwaka yanaendelea. Tafadhali fanya malipo yako kabla ya tarehe 30/09/2023 ili uepuke adhabu.">Malipo ya Ada ya Mwaka</span>
+                    </div>
+                    <div class="matangazo-item">
+                        <span class="matangazo-date">15/08/2023</span>
+                        <span class="matangazo-text" data-title="Mafunzo ya Ujasiriamali" data-date="15/08/2023" data-text="Mafunzo ya ujasiriamali yatafanyika wiki ijayo kwa wanachama wote waliojiandikisha. Huduma itatolewa na wataalamu wa serikali.">Mafunzo ya Ujasiriamali</span>
+                    </div>
+                    <div class="matangazo-item">
+                        <span class="matangazo-date">10/08/2023</span>
+                        <span class="matangazo-text" data-title="Ziara ya Kikundi" data-date="10/08/2023" data-text="Ziara ya kikundi katika mradi wa kilimo chetu utafanyika tarehe 15/08/2023. Tafadhali jiandikishe ofisini kwetu.">Ziara ya Kikundi katika Mradi wa Kilimo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- News Cards -->
+        <div class="news-cards">
+            <!-- News Item 1 -->
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">25 Agosti 2023</div>
+                    <h3 class="news-title">Mkutano Mkuu Wa Wanachama</h3>
+                    <p class="news-excerpt">
+                        Mkutano mkuu wa wanachama uliofanyika jijini ulikuwa na mafanikio makubwa. Mjumbe walizungumzia mipango mipya ya kukuza chama...
+                    </p>
+                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                </div>
+            </div>
+            
+            <!-- News Item 2 -->
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">20 Agosti 2023</div>
+                    <h3 class="news-title">Ufunguzi Wa Mradi Mpya Wa Kilimo</h3>
+                    <p class="news-excerpt">
+                        Chama kimefanikiwa kuzindua mradi mpya wa kilimo cha umwagiliaji katika eneo la Bariadi. Mradi huo unatarajiwa kuwaongezea kipato wanachama...
+                    </p>
+                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                </div>
+            </div>
+            
+            <!-- News Item 3 -->
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18861754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">15 Agosti 2023</div>
+                    <h3 class="news-title">Mafunzo Ya Uongozi Kwa Vijana</h3>
+                    <p class="news-excerpt">
+                        Chama kimeandaa mafunzo maalum ya uongozi kwa vijana wa mkoa wa Simiyu. Mafunzo yanalenga kuwawezesha vijana kushiriki kikamilifu katika maendeleo...
+                    </p>
+                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                </div>
+            </div>
+            
+            <!-- News Item 4 -->
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1521737451536-00a86f630f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">10 Agosti 2023</div>
+                    <h3 class="news-title">Programu Ya Elimu Kwa Watoto</h3>
+                    <p class="news-excerpt">
+                        Chama kimeanzisha programu maalum ya kusaidia watoto wenye uhitaji wa masomo katika mkoa wa Simiyu. Mpango huo unalenga kuhakikisha hakuna mtoto anayeacha...
+                    </p>
+                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                </div>
+            </div>
+            
+            <!-- News Item 5 -->
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">5 Agosti 2023</div>
+                    <h3 class="news-title">Sherehe Ya Miaka 10 Ya Chama</h3>
+                    <p class="news-excerpt">
+                        Chama cha Friends of Simiyu kilisherehekea miaka 10 ya kuwepo kwa kufanikiwa kukusanya wanachama na wadau mbalimbali katika ukumbi wa kiserikali...
+                    </p>
+                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                </div>
+            </div>
+            
+            <!-- News Item 6 -->
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">1 Agosti 2023</div>
+                    <h3 class="news-title">Mradi Wa Kilimo Endelevu</h3>
+                    <p class="news-excerpt">
+                        Chama kimepokea fedha za kuanzisha mradi wa kilimo endelevu kutoka kwa wadau wa kimataifa. Mradi huo utasaidia wanachama kupata mbinya za kisasa...
+                    </p>
+                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                </div>
+            </div>
+            
+            <!-- News Item 7 -->
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">28 Julai 2023</div>
+                    <h3 class="news-title">Usaidizi Wa Kifedha Kwa Wanachama</h3>
+                    <p class="news-excerpt">
+                        Chama kimeweza kuwapa mikopo wanachama wake kwa kushirikiana na benki ya kilimo. Hii itawawezesha wanachama kupanua shughuli zao za kiuchumi...
+                    </p>
+                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                </div>
+            </div>
+            
+            <!-- News Item 8 -->
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">25 Julai 2023</div>
+                    <h3 class="news-title">Uvumbuzi Wa Maji Safi</h3>
+                    <p class="news-excerpt">
+                        Chama kimefanikiwa kuvunja visima vipya katika vijiji vitatu vya mkoa wa Simiyu. Hii itasaidia kuondokana na matatizo ya maji safi yaliyokuwepo...
+                    </p>
+                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Typing effect for "Karibu"
+        function typeWelcomeText() {
+            const welcomeText = "Karibu";
+            const welcomeElement = document.getElementById("welcome-text");
+            let i = 0;
+            
+            function type() {
+                if (i < welcomeText.length) {
+                    welcomeElement.innerHTML += welcomeText.charAt(i);
+                    i++;
+                    setTimeout(type, 150);
+                } else {
+                    setTimeout(deleteText, 2000);
+                }
+            }
+            
+            function deleteText() {
+                if (welcomeElement.innerHTML.length > 0) {
+                    welcomeElement.innerHTML = welcomeElement.innerHTML.slice(0, -1);
+                    setTimeout(deleteText, 100);
+                } else {
+                    i = 0;
+                    setTimeout(type, 500);
+                }
+            }
+            
+            type();
+        }
+        
+        // Sliding tagline effect
+        function showTagline() {
+            const taglineText = "Maadili, Mshikamano, Maendeleo na Urafiki";
+            const taglineElement = document.getElementById("tagline-text");
+            const words = taglineText.split(", ");
+            let currentWord = 0;
+            
+            function showNextWord() {
+                taglineElement.style.opacity = 0;
+                
+                setTimeout(() => {
+                    taglineElement.textContent = words[currentWord];
+                    taglineElement.style.opacity = 1;
+                    
+                    currentWord = (currentWord + 1) % words.length;
+                    setTimeout(showNextWord, 2000);
+                }, 500);
+            }
+            
+            showNextWord();
+        }
+        
+        // Menu functionality
+        function setupMenu() {
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const navMenu = document.getElementById('nav-menu');
+            const closeMenu = document.getElementById('close-menu');
+            const overlay = document.getElementById('overlay');
+            
+            // Open menu
+            hamburgerMenu.addEventListener('click', () => {
+                navMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Close menu
+            closeMenu.addEventListener('click', closeNavigation);
+            overlay.addEventListener('click', closeNavigation);
+            
+            // Close menu when clicking on links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeNavigation);
+            });
+            
+            function closeNavigation() {
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Escape key to close menu
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeNavigation();
+                }
+            });
+        }
+        
+        // Slider functionality
+        function setupSlider() {
+            const slider = document.getElementById('slider');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            let currentIndex = 0;
+            let slideInterval;
+            
+            // Function to show a specific slide
+            function showSlide(index) {
+                if (index < 0) {
+                    index = slides.length - 1;
+                } else if (index >= slides.length) {
+                    index = 0;
+                }
+                
+                slider.style.transform = `translateX(-${index * 100}%)`;
+                
+                // Update active dot
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+                
+                currentIndex = index;
+            }
+            
+            // Function to start auto sliding
+            function startSlider() {
+                slideInterval = setInterval(() => {
+                    showSlide(currentIndex + 1);
+                }, 5000);
+            }
+            
+            // Function to stop auto sliding
+            function stopSlider() {
+                clearInterval(slideInterval);
+            }
+            
+            // Add click events to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    stopSlider();
+                    showSlide(index);
+                    startSlider();
+                });
+            });
+            
+            // Add click events to navigation buttons
+            prevBtn.addEventListener('click', () => {
+                stopSlider();
+                showSlide(currentIndex - 1);
+                startSlider();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                stopSlider();
+                showSlide(currentIndex + 1);
+                startSlider();
+            });
+            
+            // Start the slider
+            startSlider();
+            
+            // Pause slider when user hovers over it
+            const sliderContainer = document.querySelector('.slider-container');
+            sliderContainer.addEventListener('mouseenter', stopSlider);
+            sliderContainer.addEventListener('mouseleave', startSlider);
+        }
+        
+        // Header scroll effect
+        function setupHeaderScroll() {
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+        
+        // Matangazo modal functionality
+        function setupMatangazoModal() {
+            const modal = document.getElementById('announcement-modal');
+            const closeModal = document.getElementById('close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDate = document.getElementById('modal-date');
+            const modalText = document.getElementById('modal-text');
+            const matangazoItems = document.querySelectorAll('.matangazo-text');
+            
+            // Open modal when matangazo item is clicked
+            matangazoItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    modalTitle.textContent = item.getAttribute('data-title');
+                    modalDate.textContent = item.getAttribute('data-date');
+                    modalText.textContent = item.getAttribute('data-text');
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+        
+        // Initialize everything when page loads
+        window.onload = function() {
+            typeWelcomeText();
+            setTimeout(showTagline, 2500);
+            setupMenu();
+            setupSlider();
+            setupHeaderScroll();
+            setupMatangazoModal();
+        };
+    </script>
+</body>
+</html>
