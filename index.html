@@ -27,7 +27,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
+            padding: 1rem 5%;
             background: rgba(0, 0, 0, 0.9);
             position: fixed;
             width: 100%;
@@ -169,6 +169,10 @@
             margin-bottom: 1.5rem;
             color: #2ecc71;
             min-height: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.5rem 1.5rem;
+            border-radius: 10px;
         }
         
         .main-title {
@@ -184,6 +188,7 @@
             color: #f1c40f;
             min-height: 2.5rem;
             overflow: hidden;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .feature-card {
@@ -221,25 +226,6 @@
             color: #2ecc71;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
-        }
-        
-        .scroll-down {
-            margin-top: 2rem;
-            font-size: 2rem;
-            color: #fff;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
         }
         
         /* About Us Section */
@@ -309,6 +295,12 @@
             object-fit: cover;
             border: 3px solid #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .slide img:hover {
+            transform: scale(1.02);
         }
         
         .slide-caption {
@@ -528,6 +520,12 @@
             height: 200px;
             object-fit: cover;
             border-bottom: 3px solid #2ecc71;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .news-image:hover {
+            transform: scale(1.05);
         }
         
         .news-content {
@@ -561,13 +559,719 @@
             text-decoration: none;
             font-weight: 600;
             transition: background 0.3s ease;
+            cursor: pointer;
         }
         
         .news-read-more:hover {
             background: #27ae60;
         }
         
-        /* Modal for announcements */
+        /* Matukio Section */
+        .matukio-container {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 80px 20px 50px;
+            background: linear-gradient(to bottom, #f0fff0, #e0f7e0);
+        }
+        
+        .events-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .events-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #2ecc71;
+        }
+        
+        .event-tab {
+            padding: 0.8rem 1.5rem;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            margin: 0 0.2rem;
+            font-weight: 600;
+        }
+        
+        .event-tab.active {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 2px solid #2ecc71;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .event-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .event-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .event-date {
+            background: #2ecc71;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            display: inline-block;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            border-radius: 5px;
+            z-index: 2;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .event-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-location {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .event-location i {
+            margin-right: 0.5rem;
+            color: #e74c3c;
+        }
+        
+        .event-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .event-btn {
+            display: inline-block;
+            background: #2ecc71;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .event-btn:hover {
+            background: #27ae60;
+        }
+        
+        /* Faida na Jiunge Section */
+        .faida-jiunge-container {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 80px 20px 50px;
+            background: linear-gradient(to bottom, #e8f5e9, #d4edda);
+        }
+        
+        .faida-section, .jiunge-section {
+            margin-bottom: 4rem;
+        }
+        
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: flex-start;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .benefit-icon {
+            font-size: 1.8rem;
+            color: #2ecc71;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .benefit-content h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-content p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .accordion {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accordion-header {
+            background: #3498db;
+            color: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .accordion-content {
+            background: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+        
+        .accordion-list {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+        
+        .accordion-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #2ecc71;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .download-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .download-btn:hover {
+            background: #27ae60;
+        }
+        
+        .join-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #2ecc71;
+            outline: none;
+        }
+        
+        .form-submit {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+        
+        .form-submit:hover {
+            background: #27ae60;
+        }
+        
+        .payment-options {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .payment-options p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        .payment-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .payment-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #3498db;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .payment-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .payment-btn:hover {
+            background: #2980b9;
+        }
+        
+        /* Uongozi Section */
+        .uongozi-container {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 80px 20px 50px;
+            background: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+        }
+        
+        .leadership-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        .main-leaders {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .leader-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border-top: 4px solid #2ecc71;
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .leader-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 2px solid #f1f1f1;
+        }
+        
+        .leader-content {
+            padding: 1.5rem;
+        }
+        
+        .leader-role {
+            color: #2ecc71;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .leader-role i {
+            margin-right: 0.5rem;
+        }
+        
+        .leader-name {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .leader-description {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .secretariat-section {
+            margin-top: 4rem;
+        }
+        
+        .secretariat-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .secretariat-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #2ecc71;
+            border-radius: 2px;
+        }
+        
+        .secretariat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .secretariat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .secretariat-icon {
+            font-size: 1.8rem;
+            color: #3498db;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .secretariat-content h4 {
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+        
+        .secretariat-content p {
+            color: #555;
+        }
+        
+        /* Mawasiliano Section */
+        .mawasiliano-container {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 80px 20px 50px;
+            background: linear-gradient(to bottom, #f9f9f9, #e9ecef);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-info h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #2ecc71;
+            padding-bottom: 0.5rem;
+        }
+        
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #2ecc71;
+            margin-right: 1rem;
+            min-width: 30px;
+        }
+        
+        .contact-text {
+            color: #555;
+        }
+        
+        .contact-text strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        
+        .social-media {
+            margin-top: 2rem;
+        }
+        
+        .social-media h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-icon.facebook {
+            background: #3b5998;
+        }
+        
+        .social-icon.twitter {
+            background: #1da1f2;
+        }
+        
+        .social-icon.instagram {
+            background: #e4405f;
+        }
+        
+        .social-icon.youtube {
+            background: #cd201f;
+        }
+        
+        .social-icon.whatsapp {
+            background: #25d366;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-form h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #2ecc71;
+            padding-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2ecc71;
+        }
+        
+        .footer-logo i {
+            margin-right: 0.5rem;
+            color: #2ecc71;
+        }
+        
+        .footer-about {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .footer-heading {
+            color: #2ecc71;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #2ecc71;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+        
+        .footer-links a:hover {
+            color: #2ecc71;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .copyright {
+            color: #ecf0f1;
+            font-size: 0.9rem;
+        }
+        
+        .back-to-top {
+            background: #2ecc71;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            background: #27ae60;
+            transform: translateY(-3px);
+        }
+        
+        /* Modal for various content */
         .modal {
             display: none;
             position: fixed;
@@ -575,19 +1279,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 1002;
             justify-content: center;
             align-items: center;
+            padding: 1rem;
         }
         
         .modal-content {
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
             overflow-y: auto;
             position: relative;
         }
@@ -600,6 +1305,7 @@
             cursor: pointer;
             color: #7f8c8d;
             transition: color 0.3s ease;
+            z-index: 10;
         }
         
         .close-modal:hover {
@@ -621,9 +1327,59 @@
         .modal-text {
             color: #555;
             line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .modal-form {
+            margin-top: 1.5rem;
+        }
+        
+        /* Image Lightbox */
+        .lightbox-modal .modal-content {
+            max-width: 90%;
+            padding: 0;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .lightbox-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
         }
         
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .events-grid, .benefits-list, .contact-content, .main-leaders, .secretariat-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         @media (max-width: 768px) {
             .main-title {
                 font-size: 2.5rem;
@@ -659,6 +1415,37 @@
             
             .news-title {
                 font-size: 1.2rem;
+            }
+            
+            .events-grid, .benefits-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .events-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .event-tab {
+                margin-bottom: 0.5rem;
+            }
+            
+            .payment-buttons {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .leader-card {
+                max-width: 350px;
+                margin: 0 auto;
             }
         }
         
@@ -704,7 +1491,32 @@
                 font-size: 1.2rem;
             }
             
-            .news-content {
+            .news-content, .event-content {
+                padding: 1rem;
+            }
+            
+            .event-tab {
+                padding: 0.6rem 1rem;
+                font-size: 1rem;
+            }
+            
+            .accordion-header {
+                padding: 0.8rem 1rem;
+            }
+            
+            .join-form, .contact-form, .contact-info {
+                padding: 1.5rem;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .leader-content {
+                padding: 1rem;
+            }
+            
+            .secretariat-card {
                 padding: 1rem;
             }
         }
@@ -733,20 +1545,30 @@
             <li><a href="#about">Kuhusu Sisi</a></li>
             <li><a href="#habari">Habari</a></li>
             <li><a href="#matukio">Matukio</a></li>
-            <li><a href="#faida">Faida</a></li>
-            <li><a href="#jiunge">Jiunge Nasi</a></li>
+            <li><a href="#faida-jiunge">Faida na Jiunge</a></li>
             <li><a href="#uongozi">Uongozi</a></li>
             <li><a href="#mawasiliano">Mawasiliano</a></li>
         </ul>
     </nav>
 
-    <!-- Modal for Announcements -->
-    <div class="modal" id="announcement-modal">
+    <!-- Modal for various content -->
+    <div class="modal" id="content-modal">
         <div class="modal-content">
-            <span class="close-modal" id="close-modal">&times;</span>
+            <span class="close-modal" id="close-content-modal">&times;</span>
             <h3 class="modal-title" id="modal-title"></h3>
             <div class="modal-date" id="modal-date"></div>
+            <img src="" alt="" class="modal-image" id="modal-image">
             <div class="modal-text" id="modal-text"></div>
+            <div class="modal-form" id="modal-form"></div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div class="modal lightbox-modal" id="image-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-image-modal">&times;</span>
+            <img src="" alt="" class="lightbox-image" id="lightbox-image">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
         </div>
     </div>
 
@@ -761,10 +1583,6 @@
                 Karibu katika jumuiya yetu ya "Friends of Simiyu". Tunayo lengo la kuimarisha mshikamano, maadili, na maendeleo katika jamii yetu. Jiunge nasi leo kuwa mchangiaji wa mabadiliko chanya.
             </p>
             <a href="#about" class="cta-button">Kuhusu Sisi</a>
-        </div>
-        
-        <div class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
@@ -810,6 +1628,15 @@
                     <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Community Celebration">
                     <div class="slide-caption">Sherehe ya kumalizia mwaka pamoja</div>
                 </div>
+                <!-- New Slides Added -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Team Collaboration">
+                    <div class="slide-caption">Ushirikiano wa timu katika miradi</div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Youth Empowerment">
+                    <div class="slide-caption">Kuwawezesha vijana katika maendeleo</div>
+                </div>
             </div>
         </div>
         
@@ -820,6 +1647,8 @@
         
         <div class="slider-nav" id="slider-nav">
             <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
             <div class="slider-dot"></div>
             <div class="slider-dot"></div>
             <div class="slider-dot"></div>
@@ -895,102 +1724,588 @@
                     <p class="news-excerpt">
                         Mkutano mkuu wa wanachama uliofanyika jijini ulikuwa na mafanikio makubwa. Mjumbe walizungumzia mipango mipya ya kukuza chama...
                     </p>
-                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                    <button class="news-read-more" data-title="Mkutano Mkuu Wa Wanachama" data-date="25 Agosti 2023" data-image="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" data-text="Mkutano mkuu wa wanachama uliofanyika jijini ulikuwa na mafanikio makubwa. Mjumbe walizungumzia mipango mipya ya kukuza chama. Mjadala ulihusu jinsi ya kuongeza ushiriki wa wanachama na kuimarisha miradi ya maendeleo ya jamii. Mwisho wa mkutano, wananchi waliahidi kuendelea kushirikiana katika kuleta maendeleo katika mkoa wa Simiyu.">Soma Zaidi</button>
                 </div>
             </div>
             
-            <!-- News Item 2 -->
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
-                <div class="news-content">
-                    <div class="news-date">20 Agosti 2023</div>
-                    <h3 class="news-title">Ufunguzi Wa Mradi Mpya Wa Kilimo</h3>
-                    <p class="news-excerpt">
-                        Chama kimefanikiwa kuzindua mradi mpya wa kilimo cha umwagiliaji katika eneo la Bariadi. Mradi huo unatarajiwa kuwaongezea kipato wanachama...
+            <!-- Additional news items would follow the same pattern -->
+        </div>
+    </section>
+
+    <!-- Matukio Section -->
+    <section id="matukio" class="matukio-container">
+        <h2 class="section-title">Matukio</h2>
+        
+        <div class="events-tabs">
+            <button class="event-tab active" data-filter="all">Yote</button>
+            <button class="event-tab" data-filter="upcoming">Yajayo</button>
+            <button class="event-tab" data-filter="past">Yaliyopita</button>
+        </div>
+        
+        <div class="events-grid">
+            <!-- Event 1 -->
+            <div class="event-card" data-category="upcoming">
+                <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">30 Agosti</div>
+                <div class="event-content">
+                    <h3 class="event-title">Mkutano Mkuu wa Wanachama</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Ukumbi wa Serikali, Simiyu
+                    </div>
+                    <p class="event-description">
+                        Mkutano mkuu wa wanachama wa chama cha Friends of Simiyu. Mjadala utahusu mipango ya maendeleo ya mwaka ujao.
                     </p>
-                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                    <button class="event-btn" data-title="Mkutano Mkuu wa Wanachama" data-date="30 Agosti 2023" data-location="Ukumbi wa Serikali, Simiyu" data-description="Mkutano mkuu wa wanachama wa chama cha Friends of Simiyu. Mjadala utahusu mipango ya maendeleo ya mwaka ujao. Tutajadili miradi mipya, bajeti ya mwaka na mambo mengine muhimu kuhusu maendeleo ya chama.">Jiandikishe</button>
                 </div>
             </div>
             
-            <!-- News Item 3 -->
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1577896851231-70ef18861754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
-                <div class="news-content">
-                    <div class="news-date">15 Agosti 2023</div>
-                    <h3 class="news-title">Mafunzo Ya Uongozi Kwa Vijana</h3>
-                    <p class="news-excerpt">
-                        Chama kimeandaa mafunzo maalum ya uongozi kwa vijana wa mkoa wa Simiyu. Mafunzo yanalenga kuwawezesha vijana kushiriki kikamilifu katika maendeleo...
+            <!-- Event 2 -->
+            <div class="event-card" data-category="upcoming">
+                <img src="https://images.unsplash.com/photo-1544396821-4dd40b938ad3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">5 Septemba</div>
+                <div class="event-content">
+                    <h3 class="event-title">Sherehe ya Miaka 13 ya Chama</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Uwanja wa ndege, Bariadi
+                    </div>
+                    <p class="event-description">
+                        Sherehe ya kusherehekea miaka 13 ya kuanzishwa kwa chama. Itakuwa na tamasha, muziki na chakula.
                     </p>
-                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                    <button class="event-btn" data-title="Sherehe ya Miaka 13 ya Chama" data-date="5 Septemba 2023" data-location="Uwanja wa ndege, Bariadi" data-description="Sherehe ya kusherehekea miaka 13 ya kuanzishwa kwa chama. Itakuwa na tamasha, muziki na chakula. Watakaribishwa wageni wa heshima na watakuwa na fursa ya kushiriki mashindano mbalimbali ya burudani.">Jiandikishe</button>
                 </div>
             </div>
             
-            <!-- News Item 4 -->
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1521737451536-00a86f630f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
-                <div class="news-content">
-                    <div class="news-date">10 Agosti 2023</div>
-                    <h3 class="news-title">Programu Ya Elimu Kwa Watoto</h3>
-                    <p class="news-excerpt">
-                        Chama kimeanzisha programu maalum ya kusaidia watoto wenye uhitaji wa masomo katika mkoa wa Simiyu. Mpango huo unalenga kuhakikisha hakuna mtoto anayeacha...
+            <!-- Additional Events (9 more) -->
+            <div class="event-card" data-category="upcoming">
+                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">12 Septemba</div>
+                <div class="event-content">
+                    <h3 class="event-title">Kupanda Miti wa Kijadi</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Msitu wa Maswa, Simiyu
+                    </div>
+                    <p class="event-description">
+                        Shughuli ya kupanda miti katika eneo la msitu wa Maswa. Wote mnakaribishwa kushiriki.
                     </p>
-                    <a href="#" class="news-read-more">Soma Zaidi</a>
                 </div>
             </div>
             
-            <!-- News Item 5 -->
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
-                <div class="news-content">
-                    <div class="news-date">5 Agosti 2023</div>
-                    <h3 class="news-title">Sherehe Ya Miaka 10 Ya Chama</h3>
-                    <p class="news-excerpt">
-                        Chama cha Friends of Simiyu kilisherehekea miaka 10 ya kuwepo kwa kufanikiwa kukusanya wanachama na wadau mbalimbali katika ukumbi wa kiserikali...
+            <div class="event-card" data-category="upcoming">
+                <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">20 Septemba</div>
+                <div class="event-content">
+                    <h3 class="event-title">Semina ya Uwekezaji</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Chuo Kikuu, Simiyu
+                    </div>
+                    <p class="event-description">
+                        Semina maalum kwaajili ya kuelimisha wanachama kuhusu fursa za uwekezaji ndani na nje ya nchi.
                     </p>
-                    <a href="#" class="news-read-more">Soma Zaidi</a>
                 </div>
             </div>
             
-            <!-- News Item 6 -->
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
-                <div class="news-content">
-                    <div class="news-date">1 Agosti 2023</div>
-                    <h3 class="news-title">Mradi Wa Kilimo Endelevu</h3>
-                    <p class="news-excerpt">
-                        Chama kimepokea fedha za kuanzisha mradi wa kilimo endelevu kutoka kwa wadau wa kimataifa. Mradi huo utasaidia wanachama kupata mbinya za kisasa...
+            <div class="event-card" data-category="upcoming">
+                <img src="https://images.unsplash.com/photo-1544396821-4dd40b938ad3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">28 Septemba</div>
+                <div class="event-content">
+                    <h3 class="event-title">Ziara ya Kijamii</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Kijiji cha Ndagalu, Simiyu
+                    </div>
+                    <p class="event-description">
+                        Ziara ya kijamii kwaajili ya kuwasaidia wakulima wa eneo hili katika shughuli zao za kilimo.
                     </p>
-                    <a href="#" class="news-read-more">Soma Zaidi</a>
                 </div>
             </div>
             
-            <!-- News Item 7 -->
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
-                <div class="news-content">
-                    <div class="news-date">28 Julai 2023</div>
-                    <h3 class="news-title">Usaidizi Wa Kifedha Kwa Wanachama</h3>
-                    <p class="news-excerpt">
-                        Chama kimeweza kuwapa mikopo wanachama wake kwa kushirikiana na benki ya kilimo. Hii itawawezesha wanachama kupanua shughuli zao za kiuchumi...
+            <div class="event-card" data-category="past">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18861754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">15 Agosti</div>
+                <div class="event-content">
+                    <h3 class="event-title">Mafunzo ya Uongozi</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Ofisi Kuu, Simiyu
+                    </div>
+                    <p class="event-description">
+                        Mafunzo ya uongozi kwa viongozi wa vyama mbalimbali vya jamii katika mkoa wa Simiyu.
                     </p>
-                    <a href="#" class="news-read-more">Soma Zaidi</a>
                 </div>
             </div>
             
-            <!-- News Item 8 -->
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="News Image" class="news-image">
-                <div class="news-content">
-                    <div class="news-date">25 Julai 2023</div>
-                    <h3 class="news-title">Uvumbuzi Wa Maji Safi</h3>
-                    <p class="news-excerpt">
-                        Chama kimefanikiwa kuvunja visima vipya katika vijiji vitatu vya mkoa wa Simiyu. Hii itasaidia kuondokana na matatizo ya maji safi yaliyokuwepo...
+            <div class="event-card" data-category="past">
+                <img src="https://images.unsplash.com/photo-1521737451536-00a86f630f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">10 Agosti</div>
+                <div class="event-content">
+                    <h3 class="event-title">Programu ya Elimu ya Afya</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Hospitali ya Rufaa, Simiyu
+                    </div>
+                    <p class="event-description">
+                        Programu ya kuelimisha jamii kuhusu umuhimu wa afya na usafi wa mazingira.
                     </p>
-                    <a href="#" class="news-read-more">Soma Zaidi</a>
+                </div>
+            </div>
+            
+            <div class="event-card" data-category="past">
+                <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">5 Agosti</div>
+                <div class="event-content">
+                    <h3 class="event-title">Ziara ya Kilimo</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Shamba la Mfano, Simiyu
+                    </div>
+                    <p class="event-description">
+                        Ziara ya kuwahimiza wakulima kuteka mitihani ya kilimo bora na kuongeza tija katika uzalishaji.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="event-card" data-category="past">
+                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">1 Agosti</div>
+                <div class="event-content">
+                    <h3 class="event-title">Kumbukumbu ya Siku ya Wakulima</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Viwanja vya Soko Kuu, Simiyu
+                    </div>
+                    <p class="event-description">
+                        Sherehe ya kuwapongeza na kuwatambua wakulima kwa mchango wao katika chakula na uchumi.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="event-card" data-category="past">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">25 Julai</div>
+                <div class="event-content">
+                    <h3 class="event-title">Mkutano wa Wajasiriamali</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Kituo cha Biashara, Simiyu
+                    </div>
+                    <p class="event-description">
+                        Mkutano wa kujadili na kuboresha fursa za biashara kwa vijana na wanawake wa mkoa.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="event-card" data-category="past">
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Image" class="event-image">
+                <div class="event-date">15 Julai</div>
+                <div class="event-content">
+                    <h3 class="event-title">Kikao cha Kamati Kuu</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Ofisi Kuu, Simiyu
+                    </div>
+                    <p class="event-description">
+                        Kikao cha kamati kuu cha chama kujadili mipango ya nusu mwaka na kufanya marekebisho.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Faida na Jiunge Section -->
+    <section id="faida-jiunge" class="faida-jiunge-container">
+        <h2 class="section-title">Faida na Jiunge Nasi</h2>
+        
+        <div class="faida-section">
+            <h3 class="section-subtitle">Faida za Kujiunga na Chama</h3>
+            <p>Kujiunga na chama cha Friends of Simiyu kunakuletea faida mbalimbali za kijamii, kiuchumi na kielimu.</p>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Ushirikiano na Mshikamano</h4>
+                        <p>Pata fursa ya kushirikiana na wengine na kuwa na msaada wa kijamii kila unapohitaji.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Mafunzo ya Kitaaluma</h4>
+                        <p>Pata mafunzo mbalimbali ya ujuzi wa maisha na stadi za kazi kutoka kwa wataalamu.</p>
+                    </div>
+                </div>
+                
+                <!-- Additional Benefits (3 more) -->
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Mikopo na Uwekezaji</h4>
+                        <p>Pata fursa ya kupata mikopo kwa masharti mazuri na ushauri wa uwekezaji.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Mtandao wa Wajasiriamali</h4>
+                        <p>Jenga uhusiano na wajasiriamali wenzako na kupanua mtandao wako wa biashara.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Msaada wa Kisheria</h4>
+                        <p>Pata msaada wa kisheria na ushauri katika masuala mbalimbali ya kisheria.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="jiunge-section">
+            <h3 class="section-subtitle">Jiunge Nasi</h3>
+            <p>Karibu ujiunge na chama chetu cha Friends of Simiyu kwa kujaza fomu ifuatayo:</p>
+            
+            <div class="accordion">
+                <div class="accordion-header">
+                    Nani anaweza kujiunga? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <p>Kila mtu anayeishi au asili yake ni katika Mkoa wa Simiyu anaweza kujiunga na chama chetu. Pia wanachama wapya wanakaribishwa kutoka mikoa mingine ya Tanzania.</p>
+                </div>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-header">
+                    Vigezo vya Kujiunga <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul class="accordion-list">
+                        <li>Kuwa na umri wa miaka 18 na kuendelea</li>
+                        <li>Kukaa katika mkoa wa Simiyu au kuwa na asili ya Simiyu</li>
+                        <li>Kubali na kuitii katiba ya chama</li>
+                        <li>Kulipa ada ya kujiunga na ada ya mwaka, ambapo kujiunga kwa mara ya kwanza ada ni tsh.50000 , kwa maelezo zaidi pakua katiba  hapa chini inaonesha mgawanyiko </li>
+                    </ul>
+                    <a href="assets/katiba-ya-uanachama.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Pakua Katiba ya Uanachama
+                    </a>
+                </div>
+            </div>
+            
+            <div class="join-form">
+                <h4>Fomu ya Kujiunga</h4>
+                <form id="membership-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullname">Jina Kamili</label>
+                            <input type="text" id="fullname" name="fullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Barua Pepe</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Namba ya Simu</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Mahali Unakoishi</label>
+                            <input type="text" id="location" name="location" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Anwani Kamili</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Wasilisha Maombi</button>
+                </form>
+                
+                <div class="payment-options">
+                    <p>Njia za Malipo: Tuma kwa namba ya malipo ya chama <strong>7975876</strong> kupitia Mixx by YAS au lipa kwa Tigo Pesa.</p>
+                    <div class="payment-buttons">
+                        <a href="tel:*150*00*7975876%23" class="payment-btn">
+                            <i class="fas fa-mobile-alt"></i> Lipa kwa Tigo Pesa
+                        </a>
+                        <a href="#" class="payment-btn">
+                            <i class="fas fa-money-bill-wave"></i> Lipa kwa Mixx by YAS
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uongozi Section -->
+    <section id="uongozi" class="uongozi-container">
+        <h2 class="section-title">Uongozi</h2>
+        
+        <div class="leadership-intro">
+            <p>"Uongozi makini katika utendaji kazi na ufanisi kukifanya chama chetu kuwa imara nyakati zote."</p>
+        </div>
+        
+        <div class="main-leaders">
+            <!-- Mwenyekiti -->
+            <div class="leader-card">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Mwenyekiti" class="leader-image">
+                <div class="leader-content">
+                    <div class="leader-role">
+                        <i class="fas fa-user"></i> Mwenyekiti
+                    </div>
+                    <h3 class="leader-name">Juma Mkono</h3>
+                    <p class="leader-description">
+                        Mwenyekiti mwenye uzoefu wa miaka 10 katika uongozi. Anajulikana kwa uongozi wake wa kina na ushikamano.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Kaimu Mwenyekiti -->
+            <div class="leader-card">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Kaimu Mwenyekiti" class="leader-image">
+                <div class="leader-content">
+                    <div class="leader-role">
+                        <i class="fas fa-user"></i> Kaimu Mwenyekiti
+                    </div>
+                    <h3 class="leader-name">Asha Simba</h3>
+                    <p class="leader-description">
+                        Mwanamke shupavu anayejihusisha na maendeleo ya jamii. Ana uzoefu wa miaka 8 katika uongozi.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Katibu -->
+            <div class="leader-card">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Katibu" class="leader-image">
+                <div class="leader-content">
+                    <div class="leader-role">
+                        <i class="fas fa-pen"></i> Katibu
+                    </div>
+                    <h3 class="leader-name">Rajab Mwita</h3>
+                    <p class="leader-description">
+                        Mtaalamu wa masuala ya usimamizi na utunzaji wa kumbukumbu. Ana uzoefu wa miaka 7 katika nafasi hii.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Mhasibu -->
+            <div class="leader-card">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Mhasibu" class="leader-image">
+                <div class="leader-content">
+                    <div class="leader-role">
+                        <i class="fas fa-calculator"></i> Mhasibu
+                    </div>
+                    <h3 class="leader-name">Mariam Kondo</h3>
+                    <p class="leader-description">
+                        Mtaalamu wa masuala ya fedha na uhasibu. Ana shahada ya uchumi na uzoefu wa miaka 9 katika nafasi hii.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="secretariat-section">
+            <h3 class="secretariat-title">Secretariats</h3>
+            
+            <div class="secretariat-grid">
+                <div class="secretariat-card">
+                    <div class="secretariat-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="secretariat-content">
+                        <h4>John Magufuli</h4>
+                        <p>Katibu wa Vijana</p>
+                    </div>
+                </div>
+                
+                <div class="secretariat-card">
+                    <div class="secretariat-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="secretariat-content">
+                        <h4>Fatuma Hassan</h4>
+                        <p>Katibu wa Wanawake</p>
+                    </div>
+                </div>
+                
+                <div class="secretariat-card">
+                    <div class="secretariat-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="secretariat-content">
+                        <h4>Michael Joseph</h4>
+                        <p>Katibu wa Miradi</p>
+                    </div>
+                </div>
+                
+                <div class="secretariat-card">
+                    <div class="secretariat-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="secretariat-content">
+                        <h4>Sarah Juma</h4>
+                        <p>Katibu wa Elimu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mawasiliano Section -->
+    <section id="mawasiliano" class="mawasiliano-container">
+        <h2 class="section-title">Mawasiliano</h2>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Wasiliana Nasi</h3>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Makao Makuu</strong>
+                            <span>Barabara ya Sokoine, Jengo la Tigo, Ghorofa ya 3, Simiyu</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Namba ya Simu</strong>
+                            <span>+255 787 654 321</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Barua Pepe</strong>
+                            <span>info@friendsofsimiyu.org</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Masaa ya Kazi</strong>
+                            <span>Jumatatu - Ijumaa: 08:00 asubuhi - 05:00 jioni<br>
+                            Jumamosi: 09:00 asubuhi - 01:00 mchana</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-media">
+                    <h4>Tufuatilie Mitandaoni</h4>
+                    <div class="social-icons">
+                        <a href="https://facebook.com/friendsofsimiyu" class="social-icon facebook" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/friendsofsimiyu" class="social-icon twitter" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com/friendsofsimiyu" class="social-icon instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://youtube.com/friendsofsimiyu" class="social-icon youtube" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/255787654321" class="social-icon whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Tuma Ujumbe</h3>
+                
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-name">Jina Kamili</label>
+                            <input type="text" id="contact-name" name="contact-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Barua Pepe</label>
+                            <input type="email" id="contact-email" name="contact-email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-subject">Mada</label>
+                        <input type="text" id="contact-subject" name="contact-subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-message">Ujumbe Wako</label>
+                        <textarea id="contact-message" name="contact-message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Tuma Ujumbe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-hands-helping"></i>
+                    <span>Friends of Simiyu</span>
+                </div>
+                <p class="footer-about">
+                    Chama kinacholenga kuimarisha mshikamano, maadili, na maendeleo katika jamii ya Simiyu. Jiunge nasi leo kuwa mchangiaji wa mabadiliko chanya.
+                </p>
+            </div>
+            
+            <div class="footer-links">
+                <h3 class="footer-heading">Viungo Vya Haraka</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Nyumbani</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> Kuhusu Sisi</a></li>
+                    <li><a href="#habari"><i class="fas fa-chevron-right"></i> Habari</a></li>
+                    <li><a href="#matukio"><i class="fas fa-chevron-right"></i> Matukio</a></li>
+                    <li><a href="#faida-jiunge"><i class="fas fa-chevron-right"></i> Jiunge Nasi</a></li>
+                    <li><a href="#uongozi"><i class="fas fa-chevron-right"></i> Uongozi</a></li>
+                    <li><a href="#mawasiliano"><i class="fas fa-chevron-right"></i> Mawasiliano</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3 class="footer-heading">Mawasiliano</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Barabara ya Sokoine, Simiyu</li>
+                    <li><i class="fas fa-phone"></i> +255 787 654 321</li>
+                    <li><i class="fas fa-envelope"></i> info@friendsofsimiyu.org</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; 2023 Friends of Simiyu. Haki zote zimehifadhiwa.
+            </div>
+            <a href="#home" class="back-to-top">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
 
     <script>
         // Typing effect for "Karibu"
@@ -1167,8 +2482,8 @@
         
         // Matangazo modal functionality
         function setupMatangazoModal() {
-            const modal = document.getElementById('announcement-modal');
-            const closeModal = document.getElementById('close-modal');
+            const modal = document.getElementById('content-modal');
+            const closeModal = document.getElementById('close-content-modal');
             const modalTitle = document.getElementById('modal-title');
             const modalDate = document.getElementById('modal-date');
             const modalText = document.getElementById('modal-text');
@@ -1200,6 +2515,273 @@
             });
         }
         
+        // Events filtering functionality
+        function setupEventsFilter() {
+            const eventTabs = document.querySelectorAll('.event-tab');
+            const eventCards = document.querySelectorAll('.event-card');
+            
+            eventTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    eventTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Get filter value
+                    const filter = tab.getAttribute('data-filter');
+                    
+                    // Show/hide events based on filter
+                    eventCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            if (card.getAttribute('data-category') === filter) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        }
+        
+        // News read more functionality
+        function setupNewsReadMore() {
+            const readMoreButtons = document.querySelectorAll('.news-read-more');
+            const modal = document.getElementById('content-modal');
+            const closeModal = document.getElementById('close-content-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDate = document.getElementById('modal-date');
+            const modalImage = document.getElementById('modal-image');
+            const modalText = document.getElementById('modal-text');
+            
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    modalTitle.textContent = button.getAttribute('data-title');
+                    modalDate.textContent = button.getAttribute('data-date');
+                    modalImage.src = button.getAttribute('data-image');
+                    modalImage.style.display = 'block';
+                    modalText.textContent = button.getAttribute('data-text');
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        }
+        
+        // Event registration functionality
+        function setupEventRegistration() {
+            const eventButtons = document.querySelectorAll('.event-btn');
+            const modal = document.getElementById('content-modal');
+            const closeModal = document.getElementById('close-content-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDate = document.getElementById('modal-date');
+            const modalImage = document.getElementById('modal-image');
+            const modalText = document.getElementById('modal-text');
+            const modalForm = document.getElementById('modal-form');
+            
+            eventButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    modalTitle.textContent = `Jiandikishe kwa ${button.getAttribute('data-title')}`;
+                    modalDate.textContent = button.getAttribute('data-date');
+                    modalImage.style.display = 'none';
+                    modalText.innerHTML = `<p><strong>Mahali:</strong> ${button.getAttribute('data-location')}</p><p>${button.getAttribute('data-description')}</p>`;
+                    
+                    // Create registration form
+                    modalForm.innerHTML = `
+                        <form id="event-registration-form">
+                            <div class="form-group">
+                                <label for="reg-name">Jina Kamili</label>
+                                <input type="text" id="reg-name" name="reg-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-email">Barua Pepe</label>
+                                <input type="email" id="reg-email" name="reg-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-phone">Namba ya Simu</label>
+                                <input type="tel" id="reg-phone" name="reg-phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-attendees">Idadi ya Watu</label>
+                                <select id="reg-attendees" name="reg-attendees">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="form-submit">Wasilisha Usajili</button>
+                        </form>
+                    `;
+                    
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Add form validation for the modal form
+                    const eventForm = document.getElementById('event-registration-form');
+                    eventForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        
+                        // Simple validation
+                        let isValid = true;
+                        const inputs = eventForm.querySelectorAll('input[required]');
+                        
+                        inputs.forEach(input => {
+                            if (!input.value.trim()) {
+                                isValid = false;
+                                input.style.borderColor = 'red';
+                            } else {
+                                input.style.borderColor = '#ddd';
+                            }
+                        });
+                        
+                        if (isValid) {
+                            alert('Usajili wako umekubaliwa! Tutawasiliana nawe hivi karibuni.');
+                            eventForm.reset();
+                            modal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        } else {
+                            alert('Tafadhali jaza sehemu zote zinazohitajika.');
+                        }
+                    });
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        }
+        
+        // Image lightbox functionality
+        function setupImageLightbox() {
+            const images = document.querySelectorAll('img[src*="unsplash"]');
+            const lightboxModal = document.getElementById('image-modal');
+            const closeLightbox = document.getElementById('close-image-modal');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            
+            images.forEach(image => {
+                image.addEventListener('click', () => {
+                    lightboxImage.src = image.src;
+                    lightboxCaption.textContent = image.alt;
+                    lightboxModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close lightbox
+            closeLightbox.addEventListener('click', () => {
+                lightboxModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close lightbox when clicking outside
+            lightboxModal.addEventListener('click', (e) => {
+                if (e.target === lightboxModal) {
+                    lightboxModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+        
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const isActive = content.classList.contains('active');
+                    
+                    // Close all accordions
+                    document.querySelectorAll('.accordion-content').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Update icons
+                    document.querySelectorAll('.accordion-header i').forEach(icon => {
+                        icon.className = 'fas fa-chevron-down';
+                    });
+                    
+                    // Open clicked accordion if it was closed
+                    if (!isActive) {
+                        content.classList.add('active');
+                        header.querySelector('i').className = 'fas fa-chevron-up';
+                    }
+                });
+            });
+        }
+        
+        // Form validation
+        function setupFormValidation() {
+            const forms = document.querySelectorAll('form');
+            
+            forms.forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Simple validation
+                    let isValid = true;
+                    const inputs = form.querySelectorAll('input[required], textarea[required]');
+                    
+                    inputs.forEach(input => {
+                        if (!input.value.trim()) {
+                            isValid = false;
+                            input.style.borderColor = 'red';
+                        } else {
+                            input.style.borderColor = '#ddd';
+                        }
+                    });
+                    
+                    if (isValid) {
+                        alert('Fomu imewasilishwa kikamilifu! Tutawasiliana nawe hivi karibuni.');
+                        form.reset();
+                        
+                        // Close modal if form is in a modal
+                        const modal = document.getElementById('content-modal');
+                        if (modal.style.display === 'flex') {
+                            modal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                    } else {
+                        alert('Tafadhali jaza sehemu zote zinazohitajika.');
+                    }
+                });
+            });
+        }
+        
+        // Back to top functionality
+        function setupBackToTop() {
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
         // Initialize everything when page loads
         window.onload = function() {
             typeWelcomeText();
@@ -1208,6 +2790,13 @@
             setupSlider();
             setupHeaderScroll();
             setupMatangazoModal();
+            setupEventsFilter();
+            setupNewsReadMore();
+            setupEventRegistration();
+            setupImageLightbox();
+            setupAccordions();
+            setupFormValidation();
+            setupBackToTop();
         };
     </script>
 </body>
